@@ -1,0 +1,7 @@
+{
+  "name": "converção",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

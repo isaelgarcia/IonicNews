@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel } from '@ionic/react';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, useIonViewWillEnter } from '@ionic/react';
 import { getStorageInstance } from '../storage';
 import './Tab2.css';
 
@@ -18,12 +18,16 @@ const Tab2: React.FC = () => {
   const loadHistory = async () => {
     const storage = getStorageInstance();
     const savedHistory: Conversion[] = (await storage.get('conversionHistory')) || [];
-    setHistory(savedHistory);
+    if (Array.isArray(savedHistory)) {
+      setHistory([...savedHistory].reverse());
+    } else {
+      setHistory([]);
+    }
   };
 
-  useEffect(() => {
+  useIonViewWillEnter(() => {
     loadHistory();
-  }, []);
+  });
 
   return (
     <IonPage>

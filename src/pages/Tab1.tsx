@@ -59,9 +59,7 @@ function Tab1() {
         history.push(newConversion);
         await storage.set('conversionHistory', history);
   
-        // Atualize a interface imediatamente
-        const updatedHistory = [...history, newConversion];
-        history(updatedHistory); // Isso deve ser feito no Tab2 se possível ou com um callback de atualização.
+        
         console.log('Conversão salva:', newConversion);
       });
   };
@@ -166,7 +164,7 @@ function Tab1() {
         </div>
 
         <div className="currency">
-          <IonInput type="number" ref={amountElementTwo} placeholder="0" />
+          <IonInput type="number" ref={amountElementTwo} placeholder="0" readonly={true} />
           <IonSelect ref={currencyElementTwo} id="currency-two" value="USD">
                 <IonSelectOption value="AED">AED</IonSelectOption>
                 <IonSelectOption value="ARS">ARS</IonSelectOption>

@@ -1,4 +1,6 @@
 import { Redirect, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { initializeStorage } from './storage';
 import {
   IonApp,
   IonIcon,
@@ -10,10 +12,11 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { cog, ellipse, square, time, trendingUp, triangle, wallet } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
+import Tab4 from './pages/Tab4';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -44,11 +47,21 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { i } from 'vite/dist/node/types.d-aGj9QkWt';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
+const App: React.FC = () => {
+  
+  useEffect(() => {
+    const initialize = async () => {
+      await initializeStorage();
+    };
+    initialize();
+  }, []);
+  
+return(
+<IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
@@ -58,8 +71,11 @@ const App: React.FC = () => (
           <Route exact path="/tab2">
             <Tab2 />
           </Route>
-          <Route path="/tab3">
+          <Route exact path="/tab3">
             <Tab3 />
+          </Route>
+          <Route path="/tab4">
+            <Tab4 />
           </Route>
           <Route exact path="/">
             <Redirect to="/tab1" />
@@ -67,21 +83,25 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+            <IonIcon aria-hidden="true" icon={wallet} />
+            <IonLabel>Conversão</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+            <IonIcon aria-hidden="true" icon={time} />
+            <IonLabel>Histórico</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonIcon aria-hidden="true" icon={trendingUp} />
+            <IonLabel>Gráficos</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="tab4" href="/tab4">
+            <IonIcon aria-hidden="true" icon={cog} />
+            <IonLabel>Configurações</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
   </IonApp>
 );
-
+};
 export default App;

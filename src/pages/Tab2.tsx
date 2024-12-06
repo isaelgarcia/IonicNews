@@ -30,7 +30,7 @@ const Tab2: React.FC = () => {
   });
 
   return (
-    <IonPage>
+    <IonPage className='page-historico'>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Histórico</IonTitle>
@@ -38,15 +38,15 @@ const Tab2: React.FC = () => {
       </IonHeader>
       
       <IonContent>
-        <IonList>
+        <IonList className='container-historico'>
           {history.length === 0 ? (
             <IonItem>
               <IonLabel>Sem histórico de conversões.</IonLabel>
             </IonItem>
           ) : (
             history.map((entry, index) => (
-              <IonItem key={index}>
-                <IonLabel>
+              <IonItem className='iten-historico' key={index}>
+                <IonLabel className='label-historico'>
                   <h2>
                     {entry.amount} {entry.from} → {entry.convertedAmount} {entry.to}
                   </h2>

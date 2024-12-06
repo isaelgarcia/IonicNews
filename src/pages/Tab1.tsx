@@ -1,14 +1,4 @@
-import {
-  IonButton,
-  IonInput,
-  IonSelect,
-  IonSelectOption,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonHeader,
-  IonSearchbar,
-} from "@ionic/react";
+import {IonButton, IonInput, IonSelect, IonSelectOption, IonPage, IonTitle, IonToolbar, IonHeader, IonSearchbar, } from "@ionic/react";
 import { getStorageInstance } from "../storage";
 import React, { useEffect, useRef, useState } from "react";
 import "./Tab1.css";
@@ -32,7 +22,7 @@ function Tab1() {
   }
 
   const isOnline = () => {
-    console.log(`Conexão online: ${navigator.onLine}`); // Adicione este log
+    console.log(`Conexão online: ${navigator.onLine}`);
     return navigator.onLine;
   };
 
@@ -42,13 +32,13 @@ function Tab1() {
       date: new Date().toISOString(),
       rates,
     });
-    console.log(`Taxas salvas para ${base}:`, rates); // Adicione este log
+    console.log(`Taxas salvas para ${base}:`, rates);
   };
 
   const getStoredRates = async (base: string) => {
     const storage = getStorageInstance();
     const data = await storage.get(`rates-${base}`);
-    console.log(`Taxas armazenadas para ${base}:`, data); // Adicione este log
+    console.log(`Taxas armazenadas para ${base}:`, data);
     return data?.rates;
   };
 
@@ -73,7 +63,7 @@ function Tab1() {
       rate = data.rates[currencyTwo];
       await saveRates(currencyOne, data.rates);
     } else {
-      console.log(`Tentando usar taxas armazenadas para ${currencyOne}`); // Adicione este log
+      console.log(`Tentando usar taxas armazenadas para ${currencyOne}`);
       const storedRates = await getStoredRates(currencyOne);
       if (storedRates) {
         rate = storedRates[currencyTwo];
@@ -150,7 +140,7 @@ function Tab1() {
         <div className="currency">
           <IonInput type="number" 
           ref={amountElementOne} 
-          placeholder="Digite o valor que quer converter!" />
+          placeholder="Digite o valor para conversão!" />
 
           <IonSelect ref={currencyElementOne} 
           id="currency-one" 
@@ -214,10 +204,10 @@ function Tab1() {
         <div className="swap-rate-container">
           <div className="rate" ref={rateElement}></div>
           <IonButton className="btn" ref={swapButton}>
-            Swap
+            Alternar
           </IonButton>
           <IonButton className="btn" ref={convertButton}>
-            Convert
+            Converter
           </IonButton>
         </div>
 

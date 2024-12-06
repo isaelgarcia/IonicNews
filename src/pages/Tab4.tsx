@@ -4,21 +4,19 @@ import './Tab4.css';
 import { setStorage, getStorage } from '../storagedata';
 
 const Tab4: React.FC = () => {
-  const [updateFrequency, setUpdateFrequency] = useState<string>('daily'); // Frequência de atualização
-  const [enableNotifications, setEnableNotifications] = useState<boolean>(false); // Ativar notificações
+  const [updateFrequency, setUpdateFrequency] = useState<string>('daily');
+  const [enableNotifications, setEnableNotifications] = useState<boolean>(false);
 
-  // Salva as configurações no storage
   const saveSettings = async () => {
     await setStorage('updateFrequency', updateFrequency);
     await setStorage('enableNotifications', enableNotifications ? 'true' : 'false');
     console.log('Configurações salvas:', { updateFrequency, enableNotifications });
   };
 
-  // Atualiza as taxas de câmbio
   const updateExchangeRates = async () => {
     try {
       const oldRates = JSON.parse(await getStorage('exchangeRates') || '{}');
-      const newRates = await fetchExchangeRates(); // Busca novas taxas da API
+      const newRates = await fetchExchangeRates();
 
       if (Object.keys(oldRates).length > 0 && hasSignificantChange(oldRates, newRates)) {
         if (enableNotifications) {
@@ -26,17 +24,16 @@ const Tab4: React.FC = () => {
         }
       }
 
-      await setStorage('exchangeRates', JSON.stringify(newRates)); // Salva novas taxas
-      await setStorage('lastUpdate', new Date().getTime().toString()); // Atualiza o timestamp
+      await setStorage('exchangeRates', JSON.stringify(newRates));
+      await setStorage('lastUpdate', new Date().getTime().toString());
       console.log('Taxas de câmbio atualizadas:', newRates);
     } catch (error) {
       console.error("Erro ao atualizar taxas de câmbio", error);
     }
   };
 
-  // Lógica para determinar mudanças significativas
   const hasSignificantChange = (oldRates: Record<string, number>, newRates: Record<string, number>) => {
-    const threshold = 0.05; // 5% de variação
+    const threshold = 0.05;
     for (const currency in oldRates) {
       if (Math.abs(newRates[currency] - oldRates[currency]) / oldRates[currency] > threshold) {
         return true;
@@ -45,15 +42,13 @@ const Tab4: React.FC = () => {
     return false;
   };
 
-  // Função de notificação (personalize conforme necessário)
   const showNotification = (message: string) => {
-    alert(message); // Simples alerta para notificação (substitua por outra abordagem se necessário)
+    alert(message);
   };
 
-  // Função simulada para buscar taxas de câmbio
   const fetchExchangeRates = async (): Promise<Record<string, number>> => {
     console.log('Obtendo as taxas de câmbio...');
-    return { USD: Math.random() * 5 + 1, EUR: Math.random() * 6 + 2 }; // Exemplo fictício
+    return { USD: Math.random() * 5 + 1, EUR: Math.random() * 6 + 2 };
   };
 
   useEffect(() => {
@@ -66,7 +61,7 @@ const Tab4: React.FC = () => {
     };
 
     loadSettings();
-    fetchHistoricalRates(); // Verifica se precisa atualizar as taxas ao carregar
+    fetchHistoricalRates();
   }, []);
 
   const fetchHistoricalRates = async () => {

@@ -1,32 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonSelect,
-  IonSelectOption,
-  IonButton,
-  IonInput,
-} from '@ionic/react';
+import {IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSelect, IonSelectOption, IonButton, IonInput,} from '@ionic/react';
 import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import {Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend,} from 'chart.js';
 import './Tab3.css';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const Tab3: React.FC = () => {
-  const [baseCurrency] = useState('USD'); // Moeda base fixa
+  const [baseCurrency] = useState('USD');
   const [targetCurrency, setTargetCurrency] = useState('BRL');
   const [chartData, setChartData] = useState<any>(null);
   const [startDate, setStartDate] = useState('');
@@ -34,7 +15,6 @@ const Tab3: React.FC = () => {
 
   const apiKey = '41942ff5d5cd4e3982db2a1e5edb8694';
 
-  // Gera as datas no intervalo especificado com o passo apropriado.
   const generateDateIntervals = (start: string, end: string, intervalMonths: number) => {
     const startDate = new Date(start);
     const endDate = new Date(end);
@@ -47,19 +27,16 @@ const Tab3: React.FC = () => {
   
     while (startDate <= endDate) {
       const year = startDate.getFullYear();
-      const month = startDate.getMonth() + 1; // Mês começa em 0, somamos 1 para exibir corretamente
-      const day = startDate.getDate(); // Mantém o mesmo dia
+      const month = startDate.getMonth() + 1;
+      const day = startDate.getDate();
   
-      // Formata a data como yyyy-mm-dd
       dates.push(`${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`);
   
-      // Avança para o próximo intervalo
       const nextMonth = startDate.getMonth() + intervalMonths;
       startDate.setMonth(nextMonth);
   
-      // Corrige o comportamento do dia ao avançar meses
       if (startDate.getDate() !== day) {
-        startDate.setDate(0); // Define para o último dia do mês anterior
+        startDate.setDate(0);
       }
     }
   
@@ -67,7 +44,6 @@ const Tab3: React.FC = () => {
     return dates;
   };
 
-  // Requisição de taxas para múltiplas datas.
   const fetchHistoricalRates = async () => {
     if (!startDate || !endDate) {
       console.error("Por favor, defina as datas de início e fim.");
@@ -95,7 +71,7 @@ const Tab3: React.FC = () => {
         const response = await fetch(url);
         if (!response.ok) {
           console.error(`Erro na requisição para ${date}: ${response.statusText}`);
-          continue; // Pule para a próxima data
+          continue;
         }
   
         const data = await response.json();
@@ -105,7 +81,6 @@ const Tab3: React.FC = () => {
         }
       }
   
-      // Garantir que a última data (endDate) esteja incluída
       if (!labels.includes(endDate)) {
         const finalDateUrl = `https://openexchangerates.org/api/historical/${endDate}.json?app_id=${apiKey}&symbols=${targetCurrency}&base=${baseCurrency}`;
         const finalResponse = await fetch(finalDateUrl);
@@ -113,8 +88,8 @@ const Tab3: React.FC = () => {
         if (finalResponse.ok) {
           const finalData = await finalResponse.json();
           if (finalData.rates && finalData.rates[targetCurrency]) {
-            labels.push(endDate); // Adiciona a data final
-            rates.push(finalData.rates[targetCurrency]); // Adiciona a taxa correspondente
+            labels.push(endDate);
+            rates.push(finalData.rates[targetCurrency]);
           }
         }
       }
@@ -152,12 +127,10 @@ const Tab3: React.FC = () => {
       </IonHeader>
 
       <IonContent>
-        {/* Moeda base fixa (USD) */}
         <IonSelect value={baseCurrency} disabled>
           <IonSelectOption value="USD">USD</IonSelectOption>
         </IonSelect>
 
-        {/* Moeda alvo editável */}
         <IonSelect
           value={targetCurrency}
           onIonChange={(e) => setTargetCurrency(e.detail.value)}
@@ -216,7 +189,6 @@ const Tab3: React.FC = () => {
           <IonSelectOption value="ZAR">ZAR</IonSelectOption>
         </IonSelect>
 
-        {/* Seleção de datas */}
         <div className="date-container">
           <IonInput
             type="date"
@@ -230,12 +202,10 @@ const Tab3: React.FC = () => {
           />
         </div>
 
-        {/* Botão para buscar taxas */}
         <div style={{ textAlign: 'center', marginTop: '1rem' }}>
           <IonButton onClick={fetchHistoricalRates}>Atualizar taxas</IonButton>
         </div>
 
-        {/* Gráfico */}
         {chartData ? (
           <div className="chart-container">
             <Line

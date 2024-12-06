@@ -97,10 +97,10 @@ const Tab4: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent>
-        <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-          <IonLabel>Frequência de Atualização</IonLabel>
-          <IonSelect
+      <IonContent className='container-configuracao'>
+        <div style={{ marginTop: '10vw', textAlign: 'center',}}>
+          <IonLabel className='label-configuracao'>Frequência de Atualização</IonLabel>
+          <IonSelect className='select-configuracao'
             value={updateFrequency}
             onIonChange={(e) => setUpdateFrequency(e.detail.value)}
           >

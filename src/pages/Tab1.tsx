@@ -22,10 +22,6 @@ function Tab1() {
   const swapButton = useRef<HTMLIonButtonElement | null>(null);
   const convertButton = useRef<HTMLIonButtonElement | null>(null);
 
-  const [updateFrequency, setUpdateFrequency] = useState<string>('daily');
-  const [enableNotifications, setEnableNotifications] = useState<boolean>(false);
-  const [lastUpdate, setLastUpdate] = useState<number>(0);  
-
   interface Conversion {
     from: string;
     to: string;
@@ -125,42 +121,6 @@ function Tab1() {
     }
   };
 
-  const loadSettings = async () => {
-    const storage = getStorageInstance();
-    const storedFrequency = await storage.get('updateFrequency');
-    const storedNotifications = await storage.get('enableNotifications');
-    const storedLastUpdate = await storage.get('lastUpdate');
-
-    if (storedFrequency) setUpdateFrequency(storedFrequency);
-    if (storedNotifications) setEnableNotifications(storedNotifications === 'true');
-    if (storedLastUpdate) setLastUpdate(parseInt(storedLastUpdate));
-  };
-
-  const checkForUpdates = () => {
-    const now = new Date().getTime();
-    const oneHour = 60 * 60 * 1000;
-    const oneDay = 24 * 60 * 60 * 1000;
-
-    if (
-      (updateFrequency === 'hourly' && now - lastUpdate >= oneHour) ||
-      (updateFrequency === 'daily' && now - lastUpdate >= oneDay)
-    ) {
-      loadExchangeRates();
-    }
-  };
-
-  const loadExchangeRates = async () => {
-    // Load rates and update `lastUpdate` timestamp
-    const now = new Date().getTime();
-    setLastUpdate(now);
-    await calculate(); // Force a calculation to update rates
-  };
-
-  useEffect(() => {
-    loadSettings();
-    checkForUpdates();
-  }, [lastUpdate, updateFrequency]);
-
   useEffect(() => {
     if (swapButton.current) {
       swapButton.current.addEventListener("click", swapCurrencies);
@@ -188,8 +148,14 @@ function Tab1() {
       </IonHeader>
       <div className="container">
         <div className="currency">
-          <IonInput type="number" ref={amountElementOne} placeholder="0" />
-          <IonSelect ref={currencyElementOne} id="currency-one" value="BRL">
+          <IonInput type="number" 
+          ref={amountElementOne} 
+          placeholder="Digite o valor que quer converter!" />
+
+          <IonSelect ref={currencyElementOne} 
+          id="currency-one" 
+          value="BRL">
+            
             <IonSelectOption value="AED">AED</IonSelectOption>
             <IonSelectOption value="ARS">ARS</IonSelectOption>
             <IonSelectOption value="AUD">AUD</IonSelectOption>
@@ -259,7 +225,7 @@ function Tab1() {
           <IonInput
             type="number"
             ref={amountElementTwo}
-            placeholder="0"
+            placeholder=""
             readonly={true}
           />
           <IonSelect ref={currencyElementTwo} id="currency-two" value="USD">
@@ -296,7 +262,7 @@ function Tab1() {
             <IonSelectOption value="MYR">MYR</IonSelectOption>
             <IonSelectOption value="NOK">NOK</IonSelectOption>
             <IonSelectOption value="NZD">NZD</IonSelectOption>
-            <IonSelectOption value="PAB">PAB</IonSelectOption>
+            <IonSelectOption value= "PAB">PAB</IonSelectOption>
             <IonSelectOption value="PEN">PEN</IonSelectOption>
             <IonSelectOption value="PHP">PHP</IonSelectOption>
             <IonSelectOption value="PKR">PKR</IonSelectOption>

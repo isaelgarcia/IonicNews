@@ -26,13 +26,13 @@ import './Tab3.css';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const Tab3: React.FC = () => {
-  const [baseCurrency, setBaseCurrency] = useState('USD');
+  const [baseCurrency] = useState('USD'); // Moeda base fixa
   const [targetCurrency, setTargetCurrency] = useState('BRL');
   const [chartData, setChartData] = useState<any>(null);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
-  const apiKey = '41942ff5d5cd4e3982db2a1e5edb8694'; // Substitua pela sua chave de API.
+  const apiKey = '41942ff5d5cd4e3982db2a1e5edb8694';
 
   // Gera as datas no intervalo especificado com o passo apropriado.
   const generateDateIntervals = (start: string, end: string, intervalMonths: number) => {
@@ -152,64 +152,12 @@ const Tab3: React.FC = () => {
       </IonHeader>
 
       <IonContent>
-        {/* Seletores de moedas */}
-        <IonSelect
-          value={baseCurrency}
-          onIonChange={(e) => setBaseCurrency(e.detail.value)}
-        >
-          <IonSelectOption value="AED">AED</IonSelectOption>
-          <IonSelectOption value="ARS">ARS</IonSelectOption>
-          <IonSelectOption value="AUD">AUD</IonSelectOption>
-          <IonSelectOption value="BGN">BGN</IonSelectOption>
-          <IonSelectOption value="BRL">BRL</IonSelectOption>
-          <IonSelectOption value="BSD">BSD</IonSelectOption>
-          <IonSelectOption value="CAD">CAD</IonSelectOption>
-          <IonSelectOption value="CHF">CHF</IonSelectOption>
-          <IonSelectOption value="CLP">CLP</IonSelectOption>
-          <IonSelectOption value="CNY">CNY</IonSelectOption>
-          <IonSelectOption value="COP">COP</IonSelectOption>
-          <IonSelectOption value="CZK">CZK</IonSelectOption>
-          <IonSelectOption value="DKK">DKK</IonSelectOption>
-          <IonSelectOption value="DOP">DOP</IonSelectOption>
-          <IonSelectOption value="EGP">EGP</IonSelectOption>
-          <IonSelectOption value="EUR">EUR</IonSelectOption>
-          <IonSelectOption value="FJD">FJD</IonSelectOption>
-          <IonSelectOption value="GBP">GBP</IonSelectOption>
-          <IonSelectOption value="GTQ">GTQ</IonSelectOption>
-          <IonSelectOption value="HKD">HKD</IonSelectOption>
-          <IonSelectOption value="HRK">HRK</IonSelectOption>
-          <IonSelectOption value="HUF">HUF</IonSelectOption>
-          <IonSelectOption value="IDR">IDR</IonSelectOption>
-          <IonSelectOption value="ILS">ILS</IonSelectOption>
-          <IonSelectOption value="INR">INR</IonSelectOption>
-          <IonSelectOption value="ISK">ISK</IonSelectOption>
-          <IonSelectOption value="JPY">JPY</IonSelectOption>
-          <IonSelectOption value="KRW">KRW</IonSelectOption>
-          <IonSelectOption value="KZT">KZT</IonSelectOption>
-          <IonSelectOption value="MXN">MXN</IonSelectOption>
-          <IonSelectOption value="MYR">MYR</IonSelectOption>
-          <IonSelectOption value="NOK">NOK</IonSelectOption>
-          <IonSelectOption value="NZD">NZD</IonSelectOption>
-          <IonSelectOption value="PAB">PAB</IonSelectOption>
-          <IonSelectOption value="PEN">PEN</IonSelectOption>
-          <IonSelectOption value="PHP">PHP</IonSelectOption>
-          <IonSelectOption value="PKR">PKR</IonSelectOption>
-          <IonSelectOption value="PLN">PLN</IonSelectOption>
-          <IonSelectOption value="PYG">PYG</IonSelectOption>
-          <IonSelectOption value="RON">RON</IonSelectOption>
-          <IonSelectOption value="RUB">RUB</IonSelectOption>
-          <IonSelectOption value="SAR">SAR</IonSelectOption>
-          <IonSelectOption value="SEK">SEK</IonSelectOption>
-          <IonSelectOption value="SGD">SGD</IonSelectOption>
-          <IonSelectOption value="THB">THB</IonSelectOption>
-          <IonSelectOption value="TRY">TRY</IonSelectOption>
-          <IonSelectOption value="TWD">TWD</IonSelectOption>
-          <IonSelectOption value="UAH">UAH</IonSelectOption>
+        {/* Moeda base fixa (USD) */}
+        <IonSelect value={baseCurrency} disabled>
           <IonSelectOption value="USD">USD</IonSelectOption>
-          <IonSelectOption value="UYU">UYU</IonSelectOption>
-          <IonSelectOption value="VND">VND</IonSelectOption>
-          <IonSelectOption value="ZAR">ZAR</IonSelectOption>
         </IonSelect>
+
+        {/* Moeda alvo editável */}
         <IonSelect
           value={targetCurrency}
           onIonChange={(e) => setTargetCurrency(e.detail.value)}
@@ -268,48 +216,38 @@ const Tab3: React.FC = () => {
           <IonSelectOption value="ZAR">ZAR</IonSelectOption>
         </IonSelect>
 
-        {/* Selecionar as datas */}
-        <div
-          style={{
-            marginTop: '1rem',
-            display: 'flex',
-            gap: '1rem',
-            justifyContent: 'center',
-          }}
-        >
+        {/* Seleção de datas */}
+        <div className="date-container">
           <IonInput
             type="date"
             value={startDate}
             onIonChange={(e) => setStartDate(e.detail.value!)}
-            label="De"
-            labelPlacement="stacked"
           />
           <IonInput
             type="date"
             value={endDate}
             onIonChange={(e) => setEndDate(e.detail.value!)}
-            label="Para"
-            labelPlacement="stacked"
           />
         </div>
 
-        {/* Botão para confirmar e buscar taxas */}
+        {/* Botão para buscar taxas */}
         <div style={{ textAlign: 'center', marginTop: '1rem' }}>
           <IonButton onClick={fetchHistoricalRates}>Atualizar taxas</IonButton>
         </div>
 
         {/* Gráfico */}
         {chartData ? (
-          <div style={{ marginTop: '2rem', height: '400px' }}>
+          <div className="chart-container">
             <Line
               data={chartData}
               options={{
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                   legend: { position: 'top' },
                   title: {
                     display: true,
-                    text: `Taxas de câmbio: ${baseCurrency} → ${targetCurrency}`,
+                    text: `Taxas de câmbio: USD → ${targetCurrency}`,
                   },
                 },
                 scales: {
@@ -325,9 +263,7 @@ const Tab3: React.FC = () => {
             />
           </div>
         ) : (
-          <p style={{ textAlign: 'center', marginTop: '2rem' }}>
-            Carregando dados...
-          </p>
+          <p className="loading-text">Carregando dados...</p>
         )}
       </IonContent>
     </IonPage>

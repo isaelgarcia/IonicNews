@@ -1,0 +1,71 @@
+/* Estilo para o cabeçalho */
+ion-header {
+    --background: #4CAF50;
+    --color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para os seletores */
+  ion-select {
+    width: 90%;
+    margin: 10px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    --placeholder-color: #888;
+    --background: #f9f9f9;
+    padding: 10px;
+  }
+  
+  /* Estilo para o container de datas */
+  .date-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .date-container ion-input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    --background: #fff;
+  }
+  
+  /* Botão estilizado */
+  ion-button {
+    --color: white;
+    margin-top: 1rem;
+    padding: 10px 16px;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  /* Estilo para o gráfico */
+  .chart-container {
+    width: 100%; /* O gráfico ocupará 100% da largura disponível */
+    height: 300px; /* Altura padrão para telas pequenas */
+    max-height: 400px; /* Altura máxima para telas maiores */
+    margin: 0 auto; /* Centraliza o gráfico */
+  }
+  
+  @media screen and (min-width: 768px) {
+    .chart-container {
+      height: 400px; /* Aumenta a altura para telas maiores */
+    }
+  }
+  
+  
+  /* Placeholder de carregamento */
+  .loading-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 20px;
+  }
+  

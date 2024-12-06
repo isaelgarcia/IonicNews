@@ -13,19 +13,24 @@ Desenvolver um aplicativo movel para a plataforma Android, utilizando o framewor
 - [Licença](#licença)
 
 ## 🗃️ Aquivos
-- [Slide de Apresentação]()
+- [Slide de Apresentação](https://www.canva.com/design/DAGYdLHyLfU/p9nquEEoG3Zi8zRsFKTPqw/edit?utm_content=DAGYdLHyLfU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - [Documentação]()
 
 
 ## 🚀 Como Baixar
 
-- Clone o repositorio na sua ide
-- 
-- 
+- Crie uma pasta e clone o repositório;
+- Abra o terminal na pasta Cambio_Moedas;
+- Insira os códigos abaixo e execulte:
+  npm install
+  npm install @ionic/storage
+  npm install react-chartjs-2 chart.js
+- Após executar todos os códigos, execute (ionic serve).
 
 ## 💡 Pre-requisitos
-- Tinkercad -> Simulador de Arduino.
-- C++ -> Linguagem utilizada.
+- Vscode ou ide de sua preferencia;
+- Node instalado em sua máquina;
+- Instalar suas dependências.
 
 ## 🤝 Contribua
 
@@ -34,5 +39,3 @@ Junte-se a nós para tornar as cidades mais acessíveis! PRs são bem-vindos.
 ## 📜 Licença
 
 MIT
-
----

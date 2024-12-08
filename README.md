@@ -20,7 +20,7 @@ Desenvolver um aplicativo movel para a plataforma Android, utilizando o framewor
 ## 🚀 Como baixar
 
 - Crie uma pasta e clone o repositório;
-- Abra o terminal na pasta Cambio_Moedas;
+- Abra o terminal na pasta inonicnewsapp;
 - Insira os códigos abaixo e execulte:
   npm install
   npm install @ionic/storage

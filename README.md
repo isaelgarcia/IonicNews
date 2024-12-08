@@ -43,6 +43,7 @@ Vá na sessão de comtribuir e veja como participar do nosso projeto.
 - [David Bezerra da Silva](https://www.linkedin.com/in/davidbdasilva/): Desenvolvedor
 - [Bruno Klisman da Silva Serafim](https://www.linkedin.com/in/bruno-klisman-30aa14267/): Gerente de Configuração Git
 - [José Henrique Marques de Oliveira](https://www.linkedin.com/in/jos%C3%A9-henrique-marques-de-oliveira-50a910258/): Documentador
+- [Vitor Hugo](https://www.linkedin.com/in/bruno-klisman-30aa14267/): Documentador
 
 ## 📜 Licença
 

@@ -25,6 +25,7 @@ Estamos sempre abertos a novas contribuições! Siga as diretrizes abaixo para g
 - Fork o Repositório: Crie um fork do repositório original.
 
 - Crie uma Nova Branch: Crie uma nova branch para a sua contribuição.
-```sh git checkout -b minha-contribuicao
-- Faça as Modificações: Implemente suas modificações no código.
 ```sh
+git checkout -b minha-contribuicao
+```
+

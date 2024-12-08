@@ -34,7 +34,13 @@ Desenvolver um aplicativo movel para a plataforma Android, utilizando o framewor
 
 ## 🤝 Contribua
 
-Junte-se a nós para tornar as cidades mais acessíveis! PRs são bem-vindos.
+Junte-se a nós para tornar o projeto melhor e atender a todos.
+Vá na sessão de comtribuir e veja como participar do nosso projeto.
+
+## Autores
+- Alberth Luiz Cândido Guerra da Silva
+- Isael Garcia Silva
+- David Bezerra da Silva
 
 ## 📜 Licença
 

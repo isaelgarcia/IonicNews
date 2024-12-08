@@ -38,9 +38,9 @@ Junte-se a nós para tornar o projeto melhor e atender a todos.
 Vá na sessão de comtribuir e veja como participar do nosso projeto.
 
 ## Autores
-- Alberth Luiz Cândido Guerra da Silva: Scrum Master
-- Isael Garcia Silva: Desenvolvedor
-- David Bezerra da Silva: Desenvolvedor
+- [Alberth Luiz Cândido Guerra da Silva](https://www.linkedin.com/in/alberth-luiz-736527229/): Scrum Master
+- [Isael Garcia Silva](https://www.linkedin.com/in/isael-garcia-7aa837271/): Desenvolvedor
+- [David Bezerra da Silva](https://www.linkedin.com/in/davidbdasilva/): Desenvolvedor
 - [Bruno Klisman da Silva Serafim](https://www.linkedin.com/in/bruno-klisman-30aa14267/): Gerente de Configuração Git
 
 ## 📜 Licença

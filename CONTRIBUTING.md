@@ -22,10 +22,28 @@ Para baixar o repositório, siga as etapas abaixo:
 
 ## Como Contribuir
 Estamos sempre abertos a novas contribuições! Siga as diretrizes abaixo para garantir um processo tranquilo:
-- Fork o Repositório: Crie um fork do repositório original.
+1. Fork o Repositório: Crie um fork do repositório original.
 
-- Crie uma Nova Branch: Crie uma nova branch para a sua contribuição.
+2. Crie uma Nova Branch: Crie uma nova branch para a sua contribuição.
 ```sh
 git checkout -b minha-contribuicao
 ```
+3. Faça as Modificações: Implemente suas modificações no código.
+4. Adicione Commits: Faça commits das suas mudanças com mensagens claras e descritivas.
+```sh
+git add . git commit -m "Descrição clara das mudanças"
+```
+5. Envie as Mudanças: Envie suas mudanças para o seu fork.
+```sh
+git push origin minha-contribuicao
+```
+## Abra um Pull Request:
+- Vá para o repositório original no GitHub.
 
+- Clique em "Pull Requests" e depois em "New Pull Request".
+
+- Selecione a branch do seu repositório forked com as alterações.
+
+- Compare e visualize as alterações, adicione uma descrição detalhada sobre o que mudou e por quê.
+
+- Clique em "Create Pull Request".

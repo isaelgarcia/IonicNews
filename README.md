@@ -41,7 +41,7 @@ Vá na sessão de comtribuir e veja como participar do nosso projeto.
 - Alberth Luiz Cândido Guerra da Silva: Scrum Master
 - Isael Garcia Silva: Desenvolvedor
 - David Bezerra da Silva: Desenvolvedor
-- Bruno Klisman da Silva Serafim: Gerente de Configuração
+- [Bruno Klisman da Silva Serafim](https://www.linkedin.com/in/bruno-klisman-30aa14267/): Gerente de Configuração Git
 
 ## 📜 Licença
 

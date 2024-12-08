@@ -38,9 +38,10 @@ Junte-se a nós para tornar o projeto melhor e atender a todos.
 Vá na sessão de comtribuir e veja como participar do nosso projeto.
 
 ## Autores
-- Alberth Luiz Cândido Guerra da Silva
-- Isael Garcia Silva
-- David Bezerra da Silva
+- Alberth Luiz Cândido Guerra da Silva: Scrum Master
+- Isael Garcia Silva: Desenvolvedor
+- David Bezerra da Silva: Desenvolvedor
+- Bruno Klisman da Silva Serafim: Gerente de Configuração
 
 ## 📜 Licença
 

@@ -17,6 +17,7 @@ ion-header {
     --placeholder-color: #888;
     --background: #f9f9f9;
     padding: 10px;
+    color: black;
   }
   
   /* Estilo para o container de datas */
@@ -26,6 +27,7 @@ ion-header {
     gap: 1rem;
     justify-content: center;
     margin-top: 1rem;
+    color: black;
   }
   
   .date-container ion-input {
@@ -34,6 +36,7 @@ ion-header {
     border-radius: 8px;
     padding: 8px;
     --background: #fff;
+    color: black;
   }
   
   /* Botão estilizado */

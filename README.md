@@ -35,9 +35,11 @@ Este projeto foi desenvolvido com foco em produtividade e aprendizado, contando 
    cd real-time-currency-converter/inonicnewsapp
 
 2. Instale as dependências:
+   ```bash
    npm install
 
 3. Inicie o projeto:
+   ```bash
    npm run dev
 
 ---
